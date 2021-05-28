@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/activeListsFragment"
+        android:icon="@drawable/ic_shopping_cart_24"
+        android:title="@string/active_lists_tab_label" />
+
+    <item
+        android:id="@+id/archivedListsFragment"
+        android:icon="@drawable/ic_archive_24"
+        android:title="@string/archived_lists_tab_label" />
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings_24"
+        android:title="@string/settings_tab_label" />
+
+</menu>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/activeListsFragment">
+
+    <fragment
+        android:id="@+id/activeListsFragment"
+        android:name="com.mrzemek.shoppinglist.ui.active_lists.ActiveListsFragment"
+        android:label="@string/active_lists_tab_label"
+        tools:layout="@layout/active_lists_fragment" >
+        <action
+            android:id="@+id/action_activeListsFragment_to_activeListDetailsFragment"
+            app:destination="@id/activeListDetailsFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/activeListsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/archivedListsFragment"
+        android:name="com.mrzemek.shoppinglist.ui.archived_lists.ArchivedListsFragment"
+        android:label="@string/archived_lists_tab_label"
+        tools:layout="@layout/archived_lists_fragment" >
+        <action
+            android:id="@+id/action_archivedListsFragment_to_archivedListDetailsFragment"
+            app:destination="@id/archivedListDetailsFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/archivedListsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/activeListDetailsFragment"
+        android:name="com.mrzemek.shoppinglist.ui.active_list_details.ActiveListDetailsFragment"
+        android:label="@string/active_list_detail_label"
+        tools:layout="@layout/active_list_details_fragment" />
+    <fragment
+        android:id="@+id/archivedListDetailsFragment"
+        android:name="com.mrzemek.shoppinglist.ui.archived_list_details.ArchivedListDetailsFragment"
+        android:label="@string/archived_list_detail_label"
+        tools:layout="@layout/archived_list_details_fragment" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mrzemek.shoppinglist.ui.settings.SettingsFragment"
+        android:label="@string/settings_tab_label"
+        tools:layout="@layout/settings_fragment" />
+</navigation>
