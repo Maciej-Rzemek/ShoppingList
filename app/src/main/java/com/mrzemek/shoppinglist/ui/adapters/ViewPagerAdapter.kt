@@ -6,7 +6,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.mrzemek.shoppinglist.ui.active_lists.ActiveListsFragment
 import com.mrzemek.shoppinglist.ui.archived_lists.ArchivedListsFragment
-import com.mrzemek.shoppinglist.ui.archived_lists.ArchivedListsViewModel
 import com.mrzemek.shoppinglist.ui.settings.SettingsFragment
 
 class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(fragmentManager, lifecycle) {

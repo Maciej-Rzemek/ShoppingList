@@ -2,6 +2,9 @@
     <string name="app_name">ShoppingList</string>
     <string name="active_lists_tab_label">Shopping Lists</string>
     <string name="archived_lists_tab_label">Archived Lists</string>
+    <string name="active_list_detail_label">List Details</string>
+    <string name="archived_list_detail_label">Archived List Detail</string>
     <string name="settings_tab_label">Settings</string>
+    <string name="new_list">New List</string>
 
 </resources>
