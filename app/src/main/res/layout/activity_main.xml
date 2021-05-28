@@ -9,12 +9,13 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/main_tab_layout"
-        android:layout_width="match_parent"
+        style="@style/CustomTabLayoutStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabBackground="@color/main_green" />
+        app:tabTextAppearance="@style/CustomTabStyle" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_view_pager"

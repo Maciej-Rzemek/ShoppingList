@@ -20,9 +20,13 @@ class MainActivity : AppCompatActivity() {
 
         TabLayoutMediator(binding.mainTabLayout, binding.mainViewPager) { tab, position ->
             when (position) {
-                0 -> {tab.text = getText(R.string.app_name)}
-                1 -> {tab.text = getText(R.string.app_name)}
-                2 -> {tab.text = getText(R.string.app_name)}
+                0 -> {tab.text = getText(R.string.active_lists_tab_label)
+                    tab.setIcon(R.drawable.ic_shopping_cart_24)}
+                1 -> {tab.text = getText(R.string.archived_lists_tab_label)
+                    tab.setIcon(R.drawable.ic_archive_24)}
+                2 -> {tab.text = getText(R.string.settings_tab_label)
+                    tab.setIcon(R.drawable.ic_settings_24)
+                }
             }
         }.attach()
     }
