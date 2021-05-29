@@ -13,14 +13,16 @@
 
         <TextView
             android:id="@+id/shopping_list_name_text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/horizontal_marigin_list_item"
             android:layout_marginTop="@dimen/vertical_margin_list_item"
+            android:layout_marginEnd="@dimen/margin_gap"
             android:layout_marginBottom="@dimen/vertical_margin_list_item"
             android:text="Shopping List"
             android:textSize="26sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/shopping_date_text_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

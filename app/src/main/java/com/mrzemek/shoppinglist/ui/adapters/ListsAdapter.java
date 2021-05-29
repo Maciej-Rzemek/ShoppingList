@@ -4,21 +4,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mrzemek.shoppinglist.R;
 import com.mrzemek.shoppinglist.core.models.ShoppingListModel;
-
-import java.util.ArrayList;
 import java.util.List;
 
-
 public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ViewHolder> {
-    private ArrayList<ShoppingListModel> shoppingLists = new ArrayList<>();
+    List<ShoppingListModel> shoppingLists;
 
-    public ListsAdapter(ArrayList<ShoppingListModel> shoppingLists) {
+    public ListsAdapter(List<ShoppingListModel> shoppingLists) {
+        this.shoppingLists = shoppingLists;
+    }
+
+    public void setShoppingLists(List<ShoppingListModel> shoppingLists) {
         this.shoppingLists = shoppingLists;
     }
 
