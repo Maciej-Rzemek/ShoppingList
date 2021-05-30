@@ -10,7 +10,7 @@ import com.mrzemek.shoppinglist.core.models.ShoppingListModel
 
 @Database(
     entities = [ShoppingListModel::class, ListDetailsModel::class],
-    version = 6
+    version = 7
 )
 abstract class ShoppingListsDatabase: RoomDatabase() {
 
