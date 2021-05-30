@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.activeListsFragment,
                 R.id.archivedListsFragment,
-                R.id.settingsFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

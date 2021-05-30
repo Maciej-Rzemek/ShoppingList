@@ -2,7 +2,6 @@ package com.mrzemek.shoppinglist.ui.active_list_details
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -54,13 +53,14 @@ class ActiveListDetailsFragment : Fragment(), KodeinAware {
         super.onViewCreated(view, savedInstanceState)
         val listId = requireArguments().getInt(SHOPPING_LIST_ID)
         currentListId = listId
+
+        //handle newItem button click
         binding.newItemExtendedFab.setOnClickListener{
             CustomDialogAddNewProduct(
                     requireContext(),
                     listId,
                     object : AddNewProductListener {
                         override fun onAddButtonClicked(item: ListDetailsModel) {
-                            Log.i("LISTA", "UTWORZONY ITEM: $item")
                             viewModel.insertNewProduct(item)
                         }
                     }
