@@ -37,6 +37,10 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ListsAdapter.ViewHolder holder, int position) {
         holder.shoppingListName.setText(shoppingLists.get(position).getShoppingName());
         holder.shoppingDate.setText(shoppingLists.get(position).getShoppingDate());
+
+        if (shoppingLists.get(position).isArchived()) {
+            holder.archiveButton.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

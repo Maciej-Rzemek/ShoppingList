@@ -7,6 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.archived_lists.ArchivedListsFragment">
 
+    <TextView
+        android:id="@+id/empty_list_label_archived_lists"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_marginBottom="@dimen/empty_list_label_margin_bottom"
+        android:text="@string/the_list_is_empty"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/archived_lists_recyclerview"
         android:layout_width="match_parent"

@@ -11,4 +11,5 @@
     <dimen name="dialog_buttons_width">40dp</dimen>
     <dimen name="dialog_title_horizontal_margin">16dp</dimen>
     <dimen name="margin_container_right">60dp</dimen>
+    <dimen name="empty_list_label_margin_bottom">200dp</dimen>
 </resources>

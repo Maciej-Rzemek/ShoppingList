@@ -16,7 +16,7 @@ class ShoppingRepository(private val database: ShoppingListsDatabase) {
 
     suspend fun archiveShoppingList(shoppingListItem: ShoppingListModel) = database.getShoppingListDao().archiveShoppingList(shoppingListItem)
 
-    fun getAllProductsList(shoppingListId: Int) = database.getShoppingListDao().getAllProductsList(shoppingListId)
+    fun getAllProductsList(shoppingListId: Int) = database.getShoppingListDao().getAllProductsListDetails(shoppingListId)
 
 
 

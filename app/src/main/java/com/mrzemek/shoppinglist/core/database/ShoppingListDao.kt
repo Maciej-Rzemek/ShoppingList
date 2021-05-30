@@ -18,7 +18,7 @@ interface ShoppingListDao {
     suspend fun archiveShoppingList(shoppingList: ShoppingListModel)
 
     @Query("SELECT * FROM product_list WHERE shopping_list_id = :listId")
-    fun getAllProductsList(listId: Int): LiveData<List<ListDetailsModel>>
+    fun getAllProductsListDetails(listId: Int): LiveData<List<ListDetailsModel>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertShoppingList(shoppingList: ShoppingListModel)

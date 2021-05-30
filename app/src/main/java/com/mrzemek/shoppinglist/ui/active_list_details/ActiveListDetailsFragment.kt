@@ -10,15 +10,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.akademiaandroida.utils.SHOPPING_LIST_ID
-import com.mrzemek.shoppinglist.R
 import com.mrzemek.shoppinglist.core.models.ListDetailsModel
 import com.mrzemek.shoppinglist.databinding.ActiveListDetailsFragmentBinding
-import com.mrzemek.shoppinglist.databinding.ActiveListsFragmentBinding
-import com.mrzemek.shoppinglist.ui.active_lists.ActiveListsViewModelFactory
 import com.mrzemek.shoppinglist.ui.adapters.ListDetailsAdapter
 import com.mrzemek.shoppinglist.ui.dialogs.AddNewProductListener
 import com.mrzemek.shoppinglist.ui.dialogs.CustomDialogAddNewProduct
-import kotlinx.android.synthetic.main.active_list_details_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
@@ -26,7 +22,7 @@ import org.kodein.di.generic.instance
 class ActiveListDetailsFragment : Fragment(), KodeinAware {
 
     override val kodein by closestKodein()
-    private val shoppingFactory: ActiveListDetailsViewModelFactory by instance()
+    private val activeListDetailsViewModelFactory: ActiveListDetailsViewModelFactory by instance()
     private var _binding: ActiveListDetailsFragmentBinding? = null
     private val binding get() = _binding!!
     private var currentListId: Int = 0
@@ -43,13 +39,14 @@ class ActiveListDetailsFragment : Fragment(), KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this, shoppingFactory).get(ActiveListDetailsViewModel::class.java)
+        viewModel = ViewModelProvider(this, activeListDetailsViewModelFactory).get(ActiveListDetailsViewModel::class.java)
         val listDetailsAdapter = ListDetailsAdapter(listOf())
         binding.itemsListRecyclerview.layoutManager = LinearLayoutManager(requireContext())
         binding.itemsListRecyclerview.adapter = listDetailsAdapter
         viewModel.getAllProductsList(currentListId).observe(viewLifecycleOwner, Observer {
             listDetailsAdapter.submitList(it)
             listDetailsAdapter.notifyDataSetChanged()
+            handleDisplayEmptyListLabel(it)
         })
     }
 
@@ -68,6 +65,14 @@ class ActiveListDetailsFragment : Fragment(), KodeinAware {
                         }
                     }
             ).show()
+        }
+    }
+
+    private fun handleDisplayEmptyListLabel(list: List<ListDetailsModel>) {
+        if (list.isEmpty()) {
+            binding.emptyListLabelListDetails.visibility = View.VISIBLE
+        } else {
+            binding.emptyListLabelListDetails.visibility = View.INVISIBLE
         }
     }
 }

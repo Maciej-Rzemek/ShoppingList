@@ -59,6 +59,7 @@ class ActiveListsFragment : Fragment(), KodeinAware,
             shoppingLists = it
             listAdapter.setShoppingLists(it)
             listAdapter.notifyDataSetChanged()
+            showEmptyListLabel()
         })
     }
 
@@ -99,5 +100,13 @@ class ActiveListsFragment : Fragment(), KodeinAware,
                     viewModel.archiveShoppingList(item)
                 }
             }).show()
+    }
+
+    private fun showEmptyListLabel() {
+        if (shoppingLists.isEmpty()) {
+            binding.emptyListLabelActiveShoppingLists.visibility = View.VISIBLE
+        } else {
+            binding.emptyListLabelActiveShoppingLists.visibility = View.INVISIBLE
+        }
     }
 }

@@ -17,5 +17,6 @@
     <string name="dialog_archive_title">Would you like to archive this list?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="the_list_is_empty">This list is empty</string>
 
 </resources>
