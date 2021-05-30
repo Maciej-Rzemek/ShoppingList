@@ -57,14 +57,11 @@ class ArchivedListsFragment : Fragment(), KodeinAware, ListsAdapter.OnListItemCl
             listAdapter.notifyDataSetChanged()
             showEmptyListLabel()
         })
-
-
     }
 
     override fun onItemClicked(position: Int) {
         val bundle = bundleOf(SHOPPING_LIST_ID to shoppingLists[position].listId)
         navController!!.navigate(R.id.action_archivedListsFragment_to_archivedListDetailsFragment, bundle)
-
     }
 
     override fun onArchiveClicked(position: Int) {
@@ -77,6 +74,4 @@ class ArchivedListsFragment : Fragment(), KodeinAware, ListsAdapter.OnListItemCl
             binding.emptyListLabelArchivedLists.visibility = View.INVISIBLE
         }
     }
-
-
 }

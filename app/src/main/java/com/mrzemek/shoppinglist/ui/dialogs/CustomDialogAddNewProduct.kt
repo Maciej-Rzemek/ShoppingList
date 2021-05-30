@@ -27,7 +27,6 @@ class CustomDialogAddNewProduct(context: Context, private var listId: Int, var a
                 return@setOnClickListener
             }
             val item = ListDetailsModel(0, listId, name, amount)
-            Log.i("PROD", "item: $item")
             addDialogListener.onAddButtonClicked(item)
             dismiss()
         }
