@@ -3,8 +3,10 @@ package com.mrzemek.shoppinglist.ui.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.mrzemek.shoppinglist.R;
 import com.mrzemek.shoppinglist.core.models.ShoppingListModel;
@@ -45,23 +47,33 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView shoppingListName;
         TextView shoppingDate;
+        ImageView archiveButton;
+        ConstraintLayout listItemContainer;
         OnListItemClicked onListItemClicked;
 
         public ViewHolder(@NonNull View itemView, OnListItemClicked onListItemClicked) {
             super(itemView);
             shoppingDate = itemView.findViewById(R.id.shopping_date_text_view);
             shoppingListName = itemView.findViewById(R.id.shopping_list_name_text_view);
+            archiveButton = itemView.findViewById(R.id.archive_icon_button);
+            listItemContainer = itemView.findViewById(R.id.list_item_container);
             this.onListItemClicked = onListItemClicked;
-            itemView.setOnClickListener(this);
+            archiveButton.setOnClickListener(this);
+            listItemContainer.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            onListItemClicked.onItemClicked(getAdapterPosition());
+            if (view == archiveButton) {
+                onListItemClicked.onArchiveClicked(getAdapterPosition());
+            } else if (view == listItemContainer) {
+                onListItemClicked.onItemClicked(getAdapterPosition());
+            }
         }
     }
 
     public interface OnListItemClicked {
         void onItemClicked(int position);
+        void onArchiveClicked(int position);
     }
 }

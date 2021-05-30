@@ -13,5 +13,9 @@ class ActiveListsViewModel(private val repository: ShoppingRepository) : ViewMod
         repository.insertNewShoppingList(newList)
     }
 
-    fun getAllShoppingLists() = repository.getAllShoppingLists()
+    fun getAllActiveShoppingLists() = repository.getAllActiveShoppingLists()
+
+    fun archiveShoppingList(shoppingList: ShoppingListModel) = CoroutineScope(Dispatchers.Main).launch {
+        repository.archiveShoppingList(shoppingList)
+    }
 }

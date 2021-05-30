@@ -1,7 +1,7 @@
 package com.mrzemek.shoppinglist.ui.archived_list_details
 
 import androidx.lifecycle.ViewModel
+import com.mrzemek.shoppinglist.core.repository.ShoppingRepository
 
-class ArchivedListDetailsViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class ArchivedListDetailsViewModel(private val repository: ShoppingRepository) : ViewModel() {
 }

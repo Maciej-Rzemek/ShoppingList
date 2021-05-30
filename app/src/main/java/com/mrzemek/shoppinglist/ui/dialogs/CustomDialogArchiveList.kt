@@ -14,7 +14,7 @@ class CustomDialogArchiveList(context: Context, var shoppingListItem: ShoppingLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.custom_dialog_add_new_product_layout)
+        setContentView(R.layout.custom_dialog_archive_list)
 
         dialog_archive_yes.setOnClickListener{
             val item = ShoppingListModel(shoppingListItem.listId, shoppingListItem.shoppingName, shoppingListItem.shoppingDate, true)

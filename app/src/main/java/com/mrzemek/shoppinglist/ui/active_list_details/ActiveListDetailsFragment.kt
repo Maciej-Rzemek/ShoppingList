@@ -48,8 +48,6 @@ class ActiveListDetailsFragment : Fragment(), KodeinAware {
         binding.itemsListRecyclerview.layoutManager = LinearLayoutManager(requireContext())
         binding.itemsListRecyclerview.adapter = listDetailsAdapter
         viewModel.getAllProductsList(currentListId).observe(viewLifecycleOwner, Observer {
-            Log.i("LISTAITEMSÓW", "it: $it")
-            Log.i("LISTAITEMSÓW", "it size: ${it.size}")
             listDetailsAdapter.submitList(it)
             listDetailsAdapter.notifyDataSetChanged()
         })

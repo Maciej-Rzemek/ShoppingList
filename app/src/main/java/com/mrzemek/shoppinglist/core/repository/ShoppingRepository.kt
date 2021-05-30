@@ -10,7 +10,14 @@ class ShoppingRepository(private val database: ShoppingListsDatabase) {
 
     suspend fun insertNewProduct(newProduct: ListDetailsModel) = database.getShoppingListDao().insertNewProduct(newProduct)
 
-    fun getAllShoppingLists() = database.getShoppingListDao().getAllShoppingLists()
+    fun getAllActiveShoppingLists() = database.getShoppingListDao().getAllActiveShoppingLists()
+    
+    fun getAllArchivedShoppingLists() = database.getShoppingListDao().getAllArchivedShoppingLists()
+
+    suspend fun archiveShoppingList(shoppingListItem: ShoppingListModel) = database.getShoppingListDao().archiveShoppingList(shoppingListItem)
 
     fun getAllProductsList(shoppingListId: Int) = database.getShoppingListDao().getAllProductsList(shoppingListId)
+
+
+
 }

@@ -1,18 +1,21 @@
 package com.mrzemek.shoppinglist.core.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.mrzemek.shoppinglist.core.models.ListDetailsModel
 import com.mrzemek.shoppinglist.core.models.ShoppingListModel
 
 @Dao
 interface ShoppingListDao {
 
-    @Query("SELECT * FROM shopping_list_name")
-    fun getAllShoppingLists(): LiveData<List<ShoppingListModel>>
+    @Query("SELECT * FROM shopping_list_name WHERE archived = 0")
+    fun getAllActiveShoppingLists(): LiveData<List<ShoppingListModel>>
+
+    @Query("SELECT * FROM shopping_list_name WHERE archived = 1")
+    fun getAllArchivedShoppingLists(): LiveData<List<ShoppingListModel>>
+
+    @Update
+    suspend fun archiveShoppingList(shoppingList: ShoppingListModel)
 
     @Query("SELECT * FROM product_list WHERE shopping_list_id = :listId")
     fun getAllProductsList(listId: Int): LiveData<List<ListDetailsModel>>
