@@ -9,7 +9,7 @@ import com.mrzemek.shoppinglist.R
 import com.mrzemek.shoppinglist.core.models.ListDetailsModel
 import com.mrzemek.shoppinglist.databinding.DetailsListRecyclerItemBinding
 
-class ListDetailsAdapter(private var productList: MutableList<ListDetailsModel>): RecyclerView.Adapter<ListDetailsAdapter.ItemViewHolder>() {
+class ListDetailsAdapter(private var productList: List<ListDetailsModel>): RecyclerView.Adapter<ListDetailsAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListDetailsAdapter.ItemViewHolder {
         val itemBinding = DetailsListRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,9 +23,13 @@ class ListDetailsAdapter(private var productList: MutableList<ListDetailsModel>)
 
     override fun getItemCount(): Int = productList.size
 
+    fun submitList(list: List<ListDetailsModel>){
+        productList = list
+    }
+
     inner class ItemViewHolder(private val itemBinding: DetailsListRecyclerItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(product: ListDetailsModel) {
-            itemBinding.priceTextView.text = product.productPrice.toString()
+            itemBinding.priceTextView.text = product.productAmount
             itemBinding.productNameTextView.text = product.productName
         }
     }

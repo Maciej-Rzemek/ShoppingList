@@ -6,5 +6,17 @@
     <string name="archived_list_detail_label">Archived List Detail</string>
     <string name="settings_tab_label">Settings</string>
     <string name="new_list">New List</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_date">Date</string>
+    <string name="dialog_add">ADD</string>
+    <string name="dialog_cancel">CANCEL</string>
+    <string name="dialog_add_new_list_title">New shopping list</string>
+    <string name="add_item">Add Item</string>
+    <string name="amount">Amount</string>
+    <string name="new_product">New product</string>
+    <string name="dialog_archive_title">Would you like to archive this list?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="the_list_is_empty">This list is empty</string>
 
 </resources>
