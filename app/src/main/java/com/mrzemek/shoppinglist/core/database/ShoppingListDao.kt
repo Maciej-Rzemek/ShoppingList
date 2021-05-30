@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.mrzemek.shoppinglist.core.models.ListDetailsModel
 import com.mrzemek.shoppinglist.core.models.ShoppingListModel
 
 @Dao
@@ -13,7 +14,13 @@ interface ShoppingListDao {
     @Query("SELECT * FROM shopping_list_name")
     fun getAllShoppingLists(): LiveData<List<ShoppingListModel>>
 
+    @Query("SELECT * FROM product_list WHERE shopping_list_id = :listId")
+    fun getAllProductsList(listId: Int): LiveData<List<ListDetailsModel>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertShoppingList(shoppingList: ShoppingListModel)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertNewProduct(item: ListDetailsModel)
 
 }

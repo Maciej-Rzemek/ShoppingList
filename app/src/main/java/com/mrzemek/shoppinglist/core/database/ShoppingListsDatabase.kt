@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.akademiaandroida.utils.DATABASE_NAME
+import com.mrzemek.shoppinglist.core.models.ListDetailsModel
 import com.mrzemek.shoppinglist.core.models.ShoppingListModel
 
 @Database(
-    entities = [ShoppingListModel::class],
-    version = 1
+    entities = [ShoppingListModel::class, ListDetailsModel::class],
+    version = 6
 )
 abstract class ShoppingListsDatabase: RoomDatabase() {
 
@@ -29,6 +31,6 @@ abstract class ShoppingListsDatabase: RoomDatabase() {
 
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
-                ShoppingListsDatabase::class.java, "ShoppingListsDatabase.db").build()
+                ShoppingListsDatabase::class.java, DATABASE_NAME).fallbackToDestructiveMigration().build()
     }
 }

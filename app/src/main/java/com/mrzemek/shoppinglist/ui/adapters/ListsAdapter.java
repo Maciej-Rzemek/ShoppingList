@@ -12,9 +12,11 @@ import java.util.List;
 
 public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ViewHolder> {
     List<ShoppingListModel> shoppingLists;
+    private OnListItemClicked onListItemClicked;
 
-    public ListsAdapter(List<ShoppingListModel> shoppingLists) {
+    public ListsAdapter(List<ShoppingListModel> shoppingLists, OnListItemClicked onListItemClicked) {
         this.shoppingLists = shoppingLists;
+        this.onListItemClicked = onListItemClicked;
     }
 
     public void setShoppingLists(List<ShoppingListModel> shoppingLists) {
@@ -25,7 +27,7 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ViewHolder> 
     @Override
     public ListsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lists_recycler_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view, onListItemClicked);
         return holder;
     }
 
@@ -40,14 +42,26 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ViewHolder> 
         return shoppingLists.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView shoppingListName;
         TextView shoppingDate;
+        OnListItemClicked onListItemClicked;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnListItemClicked onListItemClicked) {
             super(itemView);
             shoppingDate = itemView.findViewById(R.id.shopping_date_text_view);
             shoppingListName = itemView.findViewById(R.id.shopping_list_name_text_view);
+            this.onListItemClicked = onListItemClicked;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onListItemClicked.onItemClicked(getAdapterPosition());
+        }
+    }
+
+    public interface OnListItemClicked {
+        void onItemClicked(int position);
     }
 }

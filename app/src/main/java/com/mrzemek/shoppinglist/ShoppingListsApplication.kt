@@ -3,6 +3,7 @@ package com.mrzemek.shoppinglist
 import android.app.Application
 import com.mrzemek.shoppinglist.core.database.ShoppingListsDatabase
 import com.mrzemek.shoppinglist.core.repository.ShoppingRepository
+import com.mrzemek.shoppinglist.ui.active_list_details.ActiveListDetailsViewModelFactory
 import com.mrzemek.shoppinglist.ui.active_lists.ActiveListsViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -20,6 +21,10 @@ class ShoppingListsApplication() : Application(), KodeinAware {
         bind() from singleton { ShoppingRepository(instance()) }
         bind() from provider {
             ActiveListsViewModelFactory(instance())
+        }
+
+        bind() from provider {
+            ActiveListDetailsViewModelFactory(instance())
         }
 
     }

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class ShoppingListModel(
 
     @PrimaryKey(autoGenerate = true)
-    val listId: Int,
+    val listId: Int = 0,
 
     @ColumnInfo(name = "shopping_name")
     val shoppingName: String,

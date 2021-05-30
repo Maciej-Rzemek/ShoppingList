@@ -3,4 +3,11 @@
     <dimen name="horizontal_marigin_list_item">8dp</dimen>
     <dimen name="vertical_margin_list_item">4dp</dimen>
     <dimen name="margin_gap">32dp</dimen>
+    <dimen name="horizontal_margin_fab">16dp</dimen>
+    <dimen name="vertical_margin_fab">24dp</dimen>
+    <dimen name="recycler_item_vertical_spacing">8dp</dimen>
+    <dimen name="archive_icon_size">36dp</dimen>
+    <dimen name="recycler_item_vertical_spacing_big">24dp</dimen>
+    <dimen name="dialog_buttons_width">40dp</dimen>
+    <dimen name="dialog_title_horizontal_margin">16dp</dimen>
 </resources>
