@@ -6,3 +6,11 @@ First is sorting Shopping Lists by date. Right now I keep dates in a normal Stri
 Second is lack of tests. I started learning them not so long ago, and I still don’t feel confident enough to use it.
 I guess that next time I would implement baseFragment and baseViewModel and try to implement generic View Binding. That would take away some boilerplate code such as bindings init or allow to handle showEmptyListLabel() just in BaseFragment.
 Overall app development process was quite demanding, but I am glad of what I have accomplished. That was good and valuable experience :) 
+
+Technologies used:
+- Kotlin
+- MVVM (ViewModelsFactory included)
+- ViewBindings
+- Support for Day/Night themes
+- Room
+- Kodein
