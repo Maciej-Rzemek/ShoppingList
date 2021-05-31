@@ -11,6 +11,7 @@ Technologies used:
 - Kotlin
 - MVVM (ViewModelsFactory included)
 - ViewBindings
+- Jetpack Navigation
 - Support for Day/Night themes
 - Room
 - Kodein
