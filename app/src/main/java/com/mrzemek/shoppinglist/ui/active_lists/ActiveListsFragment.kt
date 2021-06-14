@@ -19,6 +19,7 @@ import com.mrzemek.shoppinglist.ui.adapters.ListsAdapter
 import com.mrzemek.shoppinglist.ui.dialogs.AddNewShoppingListListener
 import com.mrzemek.shoppinglist.ui.dialogs.CustomDialogAddNewShoppingList
 import com.mrzemek.shoppinglist.ui.dialogs.CustomDialogArchiveList
+import com.mrzemek.shoppinglist.utils.Helpers
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
@@ -34,10 +35,6 @@ class ActiveListsFragment : Fragment(), KodeinAware,
     private lateinit var shoppingLists: List<ShoppingListModel>
     private lateinit var viewModel: ActiveListsViewModel
 
-    companion object {
-        fun newInstance() = ActiveListsFragment()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,14 +48,18 @@ class ActiveListsFragment : Fragment(), KodeinAware,
         viewModel = ViewModelProvider(this, activeListsViewModelFactory).get(ActiveListsViewModel::class.java)
 
         val listAdapter = ListsAdapter(arrayListOf(), this)
-        binding.activeListsRecyclerview.layoutManager = LinearLayoutManager(requireContext())
-        binding.activeListsRecyclerview.adapter = listAdapter
+        binding.activeListsRecyclerview.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = listAdapter
+        }
 
         // Observes and displays all active Shopping Lists
         viewModel.getAllActiveShoppingLists().observe(viewLifecycleOwner, Observer {
             shoppingLists = it
-            listAdapter.setShoppingLists(it)
-            listAdapter.notifyDataSetChanged()
+            listAdapter.apply {
+                setShoppingLists(it)
+                notifyDataSetChanged()
+            }
             showEmptyListLabel()
         })
     }
@@ -69,13 +70,11 @@ class ActiveListsFragment : Fragment(), KodeinAware,
 
         // Opens Dialog to add new Shopping List
         binding.newListExtendedFab.setOnClickListener{
-            CustomDialogAddNewShoppingList(
-                requireContext(),
-                object : AddNewShoppingListListener {
-                    override fun onAddButtonClicked(item: ShoppingListModel) {
-                        viewModel.insertNewList(item)
-                    }
-                }).show()
+            displayNewShoppingListDialog()
+        }
+
+        if (Helpers.isShowingAddNewShoppingList) {
+            displayNewShoppingListDialog()
         }
     }
 
@@ -108,5 +107,16 @@ class ActiveListsFragment : Fragment(), KodeinAware,
         } else {
             binding.emptyListLabelActiveShoppingLists.visibility = View.INVISIBLE
         }
+    }
+
+    private fun displayNewShoppingListDialog() {
+        Helpers.isShowingAddNewShoppingList = true
+        CustomDialogAddNewShoppingList(
+            requireContext(),
+            object : AddNewShoppingListListener {
+                override fun onAddButtonClicked(item: ShoppingListModel) {
+                    viewModel.insertNewList(item)
+                }
+            }).show()
     }
 }

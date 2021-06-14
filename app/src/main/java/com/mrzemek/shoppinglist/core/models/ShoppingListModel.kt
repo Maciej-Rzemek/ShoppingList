@@ -3,6 +3,7 @@ package com.mrzemek.shoppinglist.core.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 @Entity(tableName = "shopping_list_name")
 data class ShoppingListModel(
@@ -14,7 +15,7 @@ data class ShoppingListModel(
     val shoppingName: String,
 
     @ColumnInfo(name = "shopping_date")
-    val shoppingDate: String,
+    val shoppingDate: Date?,
 
     @ColumnInfo(name = "archived")
     var isArchived: Boolean = false

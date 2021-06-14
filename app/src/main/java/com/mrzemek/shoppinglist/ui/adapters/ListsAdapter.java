@@ -10,11 +10,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.mrzemek.shoppinglist.R;
 import com.mrzemek.shoppinglist.core.models.ShoppingListModel;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ViewHolder> {
     List<ShoppingListModel> shoppingLists;
     private OnListItemClicked onListItemClicked;
+    private Calendar calendar = Calendar.getInstance();
+
 
     public ListsAdapter(List<ShoppingListModel> shoppingLists, OnListItemClicked onListItemClicked) {
         this.shoppingLists = shoppingLists;
@@ -35,8 +40,22 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ListsAdapter.ViewHolder holder, int position) {
+        Date date = shoppingLists.get(position).getShoppingDate();
+        if (date != null) {
+            calendar.setTime(date);
+
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            String selectedDay = String.valueOf(day)
+                    .concat("/")
+                    .concat(String.valueOf(month + 1))
+                    .concat("/")
+                    .concat(String.valueOf(year));
+            holder.shoppingDate.setText(selectedDay);
+        }
+
         holder.shoppingListName.setText(shoppingLists.get(position).getShoppingName());
-        holder.shoppingDate.setText(shoppingLists.get(position).getShoppingDate());
 
         if (shoppingLists.get(position).isArchived()) {
             holder.archiveButton.setVisibility(View.INVISIBLE);

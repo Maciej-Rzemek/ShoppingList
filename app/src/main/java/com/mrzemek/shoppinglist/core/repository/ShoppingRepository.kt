@@ -18,6 +18,5 @@ class ShoppingRepository(private val database: ShoppingListsDatabase) {
 
     fun getAllProductsList(shoppingListId: Int) = database.getShoppingListDao().getAllProductsListDetails(shoppingListId)
 
-
-
+    suspend fun editProduct(item: ListDetailsModel) = database.getShoppingListDao().editProduct(item)
 }
